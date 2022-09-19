@@ -5,11 +5,12 @@ all: dsa_test
 
 
 # make rule to generate the final binary
-dsa_test:  main.o cArray/cArray.o
-	@ gcc main.o cArray/cArray.o -o dsa_test.exe
+dsa_test:   cLinklist/cLinklist.o main.o
+#	@ gcc main.o cArray/cArray.o -o dsa_test.exe
+	@ gcc main.o cLinklist/cLinklist.o -o dsa_test.exe
 	
 
-main.o: array.c main.c
+main.o: cLinklist/cLinklist.c main.c
 	@ gcc -c main.c
 	
 array.o: array.c
@@ -17,3 +18,7 @@ array.o: array.c
 	
 cArray/cArray.o: cArray/cArray.c
 	@ cd cArray && gcc -c cArray.c
+
+cLinklist/cLinklist.o: cLinklist/cLinklist.c
+	@ cd cLinklist && gcc -c cLinklist.c
+

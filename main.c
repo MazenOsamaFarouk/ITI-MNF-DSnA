@@ -4,13 +4,10 @@
 // #include "array.h"
 // #include "cArray/cArray.h"
 
-typedef struct node
-{
-	int data; // 4-bytes
-	struct node*  next; // 8-bytes
-}Node_t; 
+#include "cLinklist/cLinklist.h"
 
 
+#if 0
 /**
 	@brief This function creates a linked list from scratch, containing only one node.
 	@param num input integer for the first node
@@ -35,17 +32,17 @@ Node_t* List_Create(int num)
 	return head ;
 }
 
-Node_t* List_insertFront(Node_t* head, int num)
+/* Node_t* */ List_insertFront(Node_t** head, int num)
 {
 	Node_t* newnode = (Node_t*)malloc(sizeof(Node_t));
 	if(newnode != NULL)
 	{
 		newnode->data = num ;
-		newnode->next = head;
-		head = newnode;
+		newnode->next = *head;
+		*head = newnode;
 	}
 	
-	return head ;
+	//return head ;
 }
 
 
@@ -82,7 +79,7 @@ void List_Append(Node_t* head, int num)
 	}
 }
 
-
+#endif
 
 
 int main(void)
@@ -125,6 +122,7 @@ printf("%x", x);
 #endif
 
 
+#if 0
 	Node_t* mylist = List_Create(0);
 	int choice = 0;
 	int user_data = 0;
@@ -141,7 +139,7 @@ printf("%x", x);
 				printf("enter number to insert: ");
 				scanf("%d", &user_data);
 				
-				mylist = List_insertFront(mylist, user_data);
+				mylist = List_insertFront(&mylist, user_data);
 				
 			break;
 			
@@ -172,12 +170,22 @@ printf("%x", x);
 		
 	}while(choice!=4);
 	
+#endif	
+	
+	cLinklistHandle_t mylist = cLinklist_create(0);
 	
 	
+	for(int i=0; i<3; i++)
+	{
+		cLinklist_insertFront(mylist, i+2);
+	}
 	
+	for(int i=1; i<4; i++)
+	{
+		cLinklist_Append(mylist, i*5);
+	}
 	
-	
-	
+	cLinklist_Print(mylist);
 	
 	
 	

@@ -2,9 +2,12 @@
 
 
 #include <iostream>
+#include <list>
+#include <forward_list>
 
+
+#if  0
 #include <vector>
-
 #include <array>
 
 
@@ -34,7 +37,7 @@ class cArray
 		}
 };
 
-
+#endif
 
 
 #if 0
@@ -63,13 +66,10 @@ std::string add(std::string a, std::string b)
 #endif
 
 
-
-
-
-
-
 int main(void)
 {
+
+#if 0
 	std::vector<int> v(5) ;
 	// exception
 	/*
@@ -84,24 +84,27 @@ int main(void)
 	}
 	*/
 	//  for i in range(5):
-	#if 0
-	for(std::vector<int>::iterator it=v.begin();  it < v.end() ; it++ )
+	#if 1
+	for(std::vector<int>::iterator it=v.begin();  it < v.begin()+5 ; it++ )
 	{
 		it = v.insert(it, 200 );
 	}
 	
+	/*
 	// modern c++
 	for( auto i : v) // ranged for loop 
 	{
-		/**/
+		
 	}
+	*/
 	
-	
-	for(std::vector<int>::iterator it=v.begin();  it < v.end() ; it++ )
+	for(std::vector<int>::iterator it=v.begin();  it < v.begin()+5 ; it++ )
 	{
 		std::cout << *it << ' ' ;
 	}
 	#endif
+	
+	/*
 	std::cout << add<long int>(5,6) << ' ' 
 	          << add(5.5,6.25) << ' ' 
 	        //  << add(static_cast<std::string>("Mazen"), static_cast<std::string>("Osama"))<< std::endl;
@@ -118,6 +121,30 @@ int main(void)
 	{
 		std::cout << a[i] << ' ' ;
 	}
+	*/
+	
+#endif
+	
+	// list -> double linklist
+	std::list<int> mylist = {5,10,15,20} ;
+	// forward_list -> single linked list
+	std::forward_list<int> myForwardList = {2,4,6,8};
+	
+	mylist.push_back(25);
+	mylist.push_front(2);
+	
+	for(auto it=mylist.begin(); it != mylist.end(); it++)
+	{
+		std::cout << *it << ' ' ;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

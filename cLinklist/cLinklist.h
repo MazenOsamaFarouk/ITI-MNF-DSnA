@@ -5,7 +5,8 @@
 
 typedef struct node
 {
-	int data; // 4-bytes
+	void* data; // 4-bytes
+	unsigned int type_size ;
 	struct node*  next; // 8-bytes
 }Node_t; 
 

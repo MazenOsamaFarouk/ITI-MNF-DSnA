@@ -33,7 +33,7 @@ static void CheckCapacity(cArrayHandle_t me)
 	}
 }
 
-cArrayHandle_t array_create(int capacity /*, int element_size  */)
+cArrayHandle_t array_create(int capacity ---)
 {
 	cArrayHandle_t new_array = (cArrayHandle_t)malloc(sizeof(cArray_t));
 	if(new_array != NULL)
